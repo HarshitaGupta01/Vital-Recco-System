@@ -1,0 +1,34 @@
+Disease,Doctor_Name,Specialization,Contact,Location
+Fungal infection,Dr. A Sharma,Dermatologist,9876543210,Delhi
+Allergy,Dr. B Kapoor,Allergist,9876543211,Mumbai
+GERD,Dr. C Singh,Gastroenterologist,9876543212,Kolkata
+Chronic cholestasis,Dr. D Mehta,Hepatologist,9876543213,Chennai
+Drug Reaction,Dr. E Gupta,Immunologist,9876543214,Bangalore
+Peptic ulcer disease,Dr. F Varma,Gastroenterologist,9876543215,Hyderabad
+AIDS,Dr. G Patel,Infectious Disease Specialist,9876543216,Pune
+Diabetes,Dr. H Roy,Endocrinologist,9876543217,Ahmedabad
+Gastroenteritis,Dr. I Chandra,Gastroenterologist,9876543218,Jaipur
+Bronchial Asthma,Dr. J Rao,Pulmonologist,9876543219,Lucknow
+Hypertension,Dr. K Saxena,Cardiologist,9876543220,Kanpur
+Migraine,Dr. L Das,Neurologist,9876543221,Nagpur
+Cervical spondylosis,Dr. M Nair,Orthopedist,9876543222,Indore
+Paralysis (brain hemorrhage),Dr. N Dutta,Neurologist,9876543223,Thane
+Jaundice,Dr. O Yadav,Hepatologist,9876543224,Bhopal
+Malaria,Dr. P Mishra,Infectious Disease Specialist,9876543225,Visakhapatnam
+Chicken pox,Dr. Q Malhotra,Dermatologist,9876543226,Patna
+Dengue,Dr. R Khan,Hematologist,9876543227,Vadodara
+Typhoid,Dr. S Jain,Infectious Disease Specialist,9876543228,Ghaziabad
+Hepatitis A,Dr. T Aggarwal,Hepatologist,9876543229,Ludhiana
+Hepatitis B,Dr. U Bhatt,Hepatologist,9876543230,Agra
+Hepatitis C,Dr. V Srivastava,Hepatologist,9876543231,Nashik
+Hepatitis D,Dr. W Sinha,Hepatologist,9876543232,Faridabad
+Hepatitis E,Dr. X Kaushik,Hepatologist,9876543233,Meerut
+Alcoholic hepatitis,Dr. Y Trivedi,Gastroenterologist,9876543234,Rajkot
+Tuberculosis,Dr. Z Iyer,Pulmonologist,9876543235,Varanasi
+Common Cold,Dr. AA Gupta,General Physician,9876543236,Srinagar
+Pneumonia,Dr. AB Singh,Pulmonologist,9876543237,Aurangabad
+Dimorphic hemorrhoids (piles),Dr. AC Das,Proctologist,9876543238,Dhanbad
+Heart attack,Dr. AD Mehta,Cardiologist,9876543239,Amritsar
+Varicose veins,Dr. AE Roy,Vascular Specialist,9876543240,Jodhpur
+Hypothyroidism,Dr. AF Chandra,Endocrinologist,9876543241,Ranchi
+Hyperthyroidism,Dr. A Sharma,Endocrinologist,9876543210,Gwalior
