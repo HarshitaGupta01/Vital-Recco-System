@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking</title>
+    <style>
+
+        .navbar {
+            width: 100vw; /* Full width */
+            background-color: #0A3D62; /* Change as needed */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative; /* Ensure it stays on top */
+        }
+
+        /* Custom popup styling */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: rgb(40, 70, 167);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: rgb(30, 60, 150);
+        }
+        small {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'Navbar.html' %}
+    {% block content %}
+    <div class="container">
+        <h2>Book an Appointment</h2>
+        <form id="appointments" action="/appointment" method="POST" onsubmit="return validateForm()">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required oninput="validateName()">
+            <small id="nameError">Only letters are allowed!</small>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required oninput="validatePhone()">
+            <small id="phoneError">Only numbers are allowed!</small>
+            
+            <label for="date">Appointment Date</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="time">Appointment Time</label>
+            <input type="time" id="time" name="time" required>
+            
+            <label for="doctor">Select Doctor</label>
+            <select id="doctor" name="doctor">
+                <option value="Dr. John Doe">Dr. John Doe - Cardiologist</option>
+                <option value="Dr. Jane Smith">Dr. Jane Smith - Cardiologist</option>
+                <option value="Dr. Emily Brown">Dr. Emily Brown - Cardiologist</option>
+                <option value="Dr. Emily Clarke">Dr. Emily Clarke - Neurologist</option>
+                <option value="Dr. Michael Lee">Dr. Michael Lee - Neurologist</option>
+                <option value="Dr. Sarah Nguyen">Dr. Sarah Nguyen - Neurologist</option>
+                <option value="Dr. Jessica Taylor">Dr. Jessica Taylor - Dermatologist</option>
+                <option value="Dr. David Martinez">Dr. David Martinez - Dermatologist</option>
+                <option value="Dr. Sarah Davis">Dr. Sarah Davis - Dermatologist</option>
+            </select>
+            
+            <button type="submit">Book Appointment</button>
+        </form>
+
+
+        {% if message %}
+    <p style="color: green; text-align: center;">{{ message }}</p>
+    
+{% endif %}
+
+    </div>
+    <div id="popup">Appointment Booked Successfully!</div>
+
+
+    <script>
+        document.getElementById("appointmentForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent page reload
+        
+            let formData = new FormData(document.getElementById("appointmentForm"));
+        
+            fetch("/appointment", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                let popup = document.getElementById("popup");
+                popup.style.display = "block"; // Show popup
+                setTimeout(() => { popup.style.display = "none"; }, 3000); // Hide after 3 seconds
+                document.getElementById("appointmentForm").reset(); // Clear form after submission
+            })
+            .catch(error => console.error("Error:", error));
+        };
+
+
+        function validateName() {
+            let nameInput = document.getElementById("name");
+            let nameError = document.getElementById("nameError");
+            
+            if (/\d/.test(nameInput.value)) {
+                nameError.style.display = "block";
+                nameInput.value = nameInput.value.replace(/\d/g, "");
+            } else {
+                nameError.style.display = "none";
+            }
+        }
+
+        function validatePhone() {
+            let phoneInput = document.getElementById("phone");
+            let phoneError = document.getElementById("phoneError");
+        
+            if (/[^0-9]/.test(phoneInput.value)) {
+                phoneError.style.display = "block";
+                phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "");
+            } else {
+                phoneError.style.display = "none";
+            }
+        }
+
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            
+            if (name.trim() === "" || phone.trim() === "") {
+                alert("Please fill out all fields correctly.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>
